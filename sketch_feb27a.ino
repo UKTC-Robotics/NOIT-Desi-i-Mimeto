@@ -1,12 +1,16 @@
-float value;
+int R=10000;
+int Uin=5;
+float Rx;
+int Uout= map (A3, 0, 1023, 0, 5);
+
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(A1,INPUT) ;
+Serial.begin(9600);
 }
 
 void loop() {
-  value = analogRead(A1);
-  Serial.println(value);
-  delay(250);
+int a = analogRead(A3);
+Rx= (Uout*R)/(Uin-Uout);
+Serial.println(a);
+delay(500);
 }
