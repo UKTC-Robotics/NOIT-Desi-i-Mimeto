@@ -6,6 +6,7 @@ import serial
 ard = serial.Serial('COM25', 9600)
 top = tkinter.Tk()
 top.geometry('500x500')
+
 kakvo = 0
 def valmap(value, istart, istop, ostart, ostop):
   return ostart + (ostop - ostart) * ((value - istart) / (istop - istart))
@@ -17,6 +18,7 @@ def instrument_read():
 
 
      message = str(ard.readline())
+
 
      a = message.find('#')
      b = message.find('#', a + 1)
@@ -66,7 +68,8 @@ def close():
     top.quit()
 
 
-
+def bthing():
+    root.configure(background="#ff9900")
 
 BV1 = tkinter.Button(top, text ="A0", font= 000000, bg="#00BFFF", fg="black", command = voltage1)
 BV1.place(x=50, y=100)
@@ -74,14 +77,15 @@ BV1.place(x=50, y=100)
 BV2=tkinter.Button(top, text="A1",font= 000000,bg="#642EFE", command = voltage2)
 BV2.place(x=100, y=100)
 
-BCR=tkinter.Button(top, text ="A2", font= 000000, bg="#00BFFF", fg="black", command = current)
+BCR=tkinter.Button(top, text ="A2", font= 000000, bg="#e60073", fg="black", command = current)
 BCR.place(x=150, y=100)
 
-BR=tkinter.Button(top, text ="A3", font= 000000, bg="#00BFFF", fg="black", command = res)
+BR=tkinter.Button(top, text ="A3", font= 000000, bg="#0000ff", fg="black", command = res)
 BR.place(x=200, y=100)
 
-BC=tkinter.Button(top, text="CLOSE",font= 000000,bg="#642EFE", command = close)
+BC=tkinter.Button(top, text="CLOSE",font= 000000,bg="#e60000", command = close)
 BC.place(x=250, y=300)
+
 
 Result = tkinter.Label()
 Result.place(x=100, y=300)
