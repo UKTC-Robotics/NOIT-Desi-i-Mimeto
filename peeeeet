@@ -1,0 +1,46 @@
+#include <Servo.h>
+#include <LiquidCrystal.h>
+#include <Time.h>
+
+Servo servo;
+
+//some preps:
+
+#define servo_pin 2
+//lcd:
+#define d7 13
+#define d6 12
+#define d5 11
+#define d4 10
+#define d3 9
+#define d2 8
+#define d1 7
+#define d0 6
+#define EN  4
+#define RS  5
+
+// globalni promenlivi:
+
+int pos = 0;
+long int time_var = 0;
+
+LiquidCrystal lcd(RS,EN, d4, d5, d6, d7);
+void setup() {
+  servo.attach(servo_pin);
+  lcd.begin(16,2);
+  lcd.print("HELLO!");
+  delay(1000);
+}
+
+void loop() {
+   for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    servo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(10);                       // waits 15ms for the servo to reach the position
+  }
+  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+    servo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(10);                       // waits 15ms for the servo to reach the position
+  }
+  delay(10);
+}
